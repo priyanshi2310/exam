@@ -33,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     if (name.isEmpty || email.isEmpty || password.isEmpty) {
       setState(() {
-        errorMessage = 'Please fill in all fields.';
+        errorMessage = 'Please fill in all fields (Name, Email, and Password).';
       });
     } else if (!currentvalue) {
       setState(() {
@@ -41,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
     } else {
       setValue(name, email, password);
-      Navigator.pushNamed(context, 'SignInScreen');
+      Navigator.pushNamed(context, 'HomeScreen');
     }
   }
 
@@ -224,7 +224,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 0.050 * height,
               ),
               InkWell(
-                onTap: validateSignUp,
+                onTap: () {
+                  validateSignUp();
+
+                  if (errorMessage == null) {
+                    Navigator.pushNamed(context, 'HomeScreen');
+                  }
+                },
                 child: Padding(
                   padding: const EdgeInsets.only(left: 100, right: 100),
                   child: Container(
@@ -235,21 +241,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Center(
-                      child: InkWell(
-                        onTap: () {
-                          
-                          if (errorMessage == null) {
-                            Navigator.pushNamed(context, 'HomeScreen');
-                          }
-                        },
-                        child: Text(
-                          'Sign Up ',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 0.020 * height,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xffFFFFFF),
-                          ),
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 0.020 * height,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xffFFFFFF),
                         ),
                       ),
                     ),

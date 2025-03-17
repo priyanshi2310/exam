@@ -38,7 +38,7 @@ class _SigninScreenState extends State<SigninScreen> {
 
     if (email.isEmpty || password.isEmpty) {
       setState(() {
-        errorMessage = 'Please enter both email and password.';
+        errorMessage = 'Please enter valid email and password.';
       });
     } else if (email == useremail && password == userpassword) {
       Navigator.pushNamed(context, 'HomeScreen');
@@ -48,7 +48,6 @@ class _SigninScreenState extends State<SigninScreen> {
       });
     }
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -163,13 +162,18 @@ class _SigninScreenState extends State<SigninScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    'Forgot password?',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 0.020 * height,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xff000000),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'SignUpScreen');
+                    },
+                    child: Text(
+                      'Forgot password?',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 0.020 * height,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xff000000),
+                      ),
                     ),
                   ),
                 ],
