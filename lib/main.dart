@@ -1,4 +1,8 @@
+import 'package:exam/view/getx/home.dart';
+// import 'package:exam/view/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/route_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,14 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      initialRoute: '/HomeScreen',
+      getPages: [GetPage(name: '/HomeScreen', page: () => HomeScreen())],
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyApp(),
+
+      home: const HomeScreen(),
       // initialRoute: 'SigninScreen',
       // routes: {
       //   'SigninScreen': (context) => const SigninScreen(),
